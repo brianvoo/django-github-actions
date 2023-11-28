@@ -1,4 +1,4 @@
-name: Default Django Test
+name: Basic Django Test with ZAP Baseline Scan
 
 on:
   push:
@@ -23,12 +23,12 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        cd djangobasic
+        cd webguard
         python manage.py test
     - name: Run Server
       if: ${{ success() }}
       run: |
-        cd djangobasic
+        cd webguard
         python manage.py runserver &
     - name: ZAP Scan
       uses: zaproxy/action-baseline@v0.10.0
