@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run Server
       run: |
-        cd djangobasic
+        cd webguard
         python manage.py runserver &
     - name: ZAP Scan
       uses: zaproxy/action-baseline@v0.10.0
