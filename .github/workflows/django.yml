@@ -28,6 +28,7 @@ jobs:
     - name: Run Server
       if: ${{ success() }}
       run: |
+        cd djangobasic
         python manage.py runserver &
     - name: ZAP Scan
       uses: zaproxy/action-baseline@v0.10.0
