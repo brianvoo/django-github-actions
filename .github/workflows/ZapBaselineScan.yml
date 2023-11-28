@@ -2,7 +2,7 @@ name: ZAP Baseline Scan
 
 on:
   workflow_run:
-    workflows: [django]
+    workflows: [Default Django Test]
     types:
       - completed
 
