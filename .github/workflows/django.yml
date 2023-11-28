@@ -3,18 +3,14 @@ name: Default Django Test
 on:
   push:
     branches: [ "main", "uat" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
       matrix:
         python-version: [3.10.6]
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
@@ -29,3 +25,11 @@ jobs:
       run: |
         cd djangobasic
         python manage.py test
+    - name: Run Server
+      if: ${{ success() }}
+      run: |
+        python manage.py runserver &
+    - name: ZAP Scan
+      uses: zaproxy/action-baseline@v0.10.0
+      with:
+        target: 'http://localhost:8000/'
