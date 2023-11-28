@@ -25,10 +25,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         cd djangobasic
-        python manage.py runserver 0.0.0.0:8000 --noreload
-        curl http://localhost:8000/
     - name: ZAP Scan
-      if: always()
       uses: zaproxy/action-baseline@v0.10.0
       with:
         target: 'http://localhost:8000/'
