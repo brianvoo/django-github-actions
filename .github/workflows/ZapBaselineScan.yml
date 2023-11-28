@@ -27,7 +27,7 @@ jobs:
     - name: Run Server
       run: |
         cd djangobasic
-        python manage.py runserver
+        python manage.py runserver 0.0.0.0:8000
     - name: ZAP Scan
       if: always()
       uses: zaproxy/action-baseline@v0.10.0
